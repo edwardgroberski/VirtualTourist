@@ -13,6 +13,7 @@
 		68B20DCE1C9DF00F0017F972 /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DCC1C9DF00F0017F972 /* VirtualTourist.xcdatamodeld */; };
 		68B20DD01C9DF00F0017F972 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B20DCF1C9DF00F0017F972 /* Assets.xcassets */; };
 		68B20DD31C9DF00F0017F972 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B20DD11C9DF00F0017F972 /* LaunchScreen.storyboard */; };
+		68B20DDB1C9DF4A10017F972 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B20DDA1C9DF4A10017F972 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		68B20DCF1C9DF00F0017F972 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68B20DD21C9DF00F0017F972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68B20DD41C9DF00F0017F972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68B20DDA1C9DF4A10017F972 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B20DDB1C9DF4A10017F972 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 		68B20DB91C9DF00F0017F972 = {
 			isa = PBXGroup;
 			children = (
+				68B20DDA1C9DF4A10017F972 /* MapKit.framework */,
 				68B20DC41C9DF00F0017F972 /* VirtualTourist */,
 				68B20DC31C9DF00F0017F972 /* Products */,
 			);
@@ -56,15 +60,39 @@
 		68B20DC41C9DF00F0017F972 /* VirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
-				68B20DC51C9DF00F0017F972 /* AppDelegate.swift */,
-				68B20DC71C9DF00F0017F972 /* ViewController.swift */,
-				68B20DC91C9DF00F0017F972 /* Main.storyboard */,
+				68B20DDD1C9DF4DE0017F972 /* Models */,
+				68B20DDC1C9DF4C30017F972 /* Views */,
+				68B20DDE1C9DF4F40017F972 /* Controllers */,
 				68B20DCF1C9DF00F0017F972 /* Assets.xcassets */,
-				68B20DD11C9DF00F0017F972 /* LaunchScreen.storyboard */,
+				68B20DC51C9DF00F0017F972 /* AppDelegate.swift */,
 				68B20DD41C9DF00F0017F972 /* Info.plist */,
-				68B20DCC1C9DF00F0017F972 /* VirtualTourist.xcdatamodeld */,
 			);
 			path = VirtualTourist;
+			sourceTree = "<group>";
+		};
+		68B20DDC1C9DF4C30017F972 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				68B20DC91C9DF00F0017F972 /* Main.storyboard */,
+				68B20DD11C9DF00F0017F972 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		68B20DDD1C9DF4DE0017F972 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				68B20DCC1C9DF00F0017F972 /* VirtualTourist.xcdatamodeld */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		68B20DDE1C9DF4F40017F972 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				68B20DC71C9DF00F0017F972 /* ViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +127,7 @@
 				TargetAttributes = {
 					68B20DC11C9DF00F0017F972 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = RCWCWB4E6V;
 					};
 				};
 			};
@@ -251,6 +280,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = VirtualTourist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.edwardgroberski.VirtualTourist;
@@ -262,6 +292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = VirtualTourist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.edwardgroberski.VirtualTourist;
