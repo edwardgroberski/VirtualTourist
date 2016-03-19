@@ -16,6 +16,7 @@
 		68B20DDB1C9DF4A10017F972 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B20DDA1C9DF4A10017F972 /* MapKit.framework */; };
 		68B20DE01C9DF7290017F972 /* MapRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DDF1C9DF7290017F972 /* MapRegion.swift */; };
 		68B20DE21C9DFDFB0017F972 /* MapRegionArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DE11C9DFDFB0017F972 /* MapRegionArchiver.swift */; };
+		68B20DE51C9E133C0017F972 /* MapViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DE41C9E133C0017F972 /* MapViewUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		68B20DDA1C9DF4A10017F972 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		68B20DDF1C9DF7290017F972 /* MapRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRegion.swift; sourceTree = "<group>"; };
 		68B20DE11C9DFDFB0017F972 /* MapRegionArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRegionArchiver.swift; sourceTree = "<group>"; };
+		68B20DE41C9E133C0017F972 /* MapViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				68B20DCC1C9DF00F0017F972 /* VirtualTourist.xcdatamodeld */,
 				68B20DE31C9E0A7F0017F972 /* MapRegion */,
+				68B20DE41C9E133C0017F972 /* MapViewUtils.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				68B20DE01C9DF7290017F972 /* MapRegion.swift in Sources */,
 				68B20DE21C9DFDFB0017F972 /* MapRegionArchiver.swift in Sources */,
 				68B20DC81C9DF00F0017F972 /* MapViewController.swift in Sources */,
+				68B20DE51C9E133C0017F972 /* MapViewUtils.swift in Sources */,
 				68B20DC61C9DF00F0017F972 /* AppDelegate.swift in Sources */,
 				68B20DCE1C9DF00F0017F972 /* VirtualTourist.xcdatamodeld in Sources */,
 			);
@@ -335,6 +339,7 @@
 				68B20DD91C9DF00F0017F972 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

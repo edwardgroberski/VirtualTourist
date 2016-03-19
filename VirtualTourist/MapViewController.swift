@@ -30,6 +30,8 @@ class MapViewController: UIViewController {
     */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setMapViewGesture()
         restoreMapRegion(false)
     }
     
@@ -52,11 +54,46 @@ class MapViewController: UIViewController {
 
 
 extension MapViewController : MKMapViewDelegate {
-    
+
     /**
-     Archive the map region
-     */
+    Archive the map region
+    */
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         mapRegionArchiver.archiveMapRegion(MapRegion(mapView: mapView))
     }
+    
+    
+    /**
+    Set the long press gesture on the MapView
+    */
+    func setMapViewGesture() {
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "addPin:")
+        longPressGestureRecognizer.minimumPressDuration = 1.0
+        mapView.addGestureRecognizer(longPressGestureRecognizer)
+    }
+    
+    
+    /**
+    Add pin to MapView
+    */
+    func addPin(gestureRecognizer:UIGestureRecognizer){
+        if gestureRecognizer.state == UIGestureRecognizerState.Began {
+            // Get coordinate of user's touch
+            let touchLocation = gestureRecognizer.locationInView(mapView)
+            let coordinate = mapView.convertPoint(touchLocation, toCoordinateFromView: mapView)
+            
+            // Create pin if no other annotation is at current coordinate
+            if !mapView.doesAnnotationExistAtCoordinate(coordinate) {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                mapView.addAnnotation(annotation)
+            }
+        }
+    }
+    
 }
+
+
+
+
+
