@@ -10,7 +10,20 @@ import Foundation
 import CoreData
 import MapKit
 
+
+/**
+Class representing a Pin
+*/
 class Pin: NSManagedObject {
+    
+    // MARK: Constants
+    struct Keys {
+        static let Latitude = "latitude"
+        static let Longitude = "longitude"
+    }
+    
+    
+    // MARK: Properties
     
     
     @NSManaged var latitude: NSNumber
@@ -20,8 +33,22 @@ class Pin: NSManagedObject {
         return CLLocationCoordinate2D(latitude: self.latitude.doubleValue, longitude: self.longitude.doubleValue)
     }()
     
+    
+    // MARK: Initializers
+    
+    
+    /**
+    Override init
+    */
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    
+    /**
+     Init Pin with CLLocationCoordinate2D
+     */
     init(coordinate: CLLocationCoordinate2D, context: NSManagedObjectContext) {
-        // Core Data
         let entity =  NSEntityDescription.entityForName(String(Pin), inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         
@@ -29,7 +56,14 @@ class Pin: NSManagedObject {
         longitude = coordinate.longitude as NSNumber
     }
     
-    func annotation() -> MKAnnotation {
+    
+    // MARK: Annotation
+    
+    
+    /**
+    Return Annotation from coordinate
+    */
+    func annotation() -> MKPointAnnotation {
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
         return annotation

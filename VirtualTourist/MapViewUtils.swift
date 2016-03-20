@@ -29,7 +29,19 @@ extension MKMapView {
     }
     
     
+    /**
+    Set Annotations from array of Pins
+     */
     func setAnnotationsWithPins(pins:[Pin]) {
+        var annotations = [MKPointAnnotation]()
         
+        for pin in pins {
+            // Add Pin's Annotation to array
+            annotations.append(pin.annotation())
+        }
+        
+        // Clear existing annotations and then add new annotations to map view
+        removeAnnotations(annotations)
+        addAnnotations(annotations)
     }
 }

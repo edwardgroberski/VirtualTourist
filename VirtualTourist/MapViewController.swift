@@ -26,15 +26,17 @@ class MapViewController: UIViewController {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
+    /**
+    NSFetchedResultsController with all Pins
+     */
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let fetchRequest = NSFetchRequest(entityName: String(Pin))
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: Pin.Keys.Latitude, ascending: true)]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+        return NSFetchedResultsController(fetchRequest: fetchRequest,
             managedObjectContext: self.sharedContext,
             sectionNameKeyPath: nil,
             cacheName: nil)
-        
-        return fetchedResultsController
     }()
     
     
@@ -82,6 +84,30 @@ extension MapViewController : NSFetchedResultsControllerDelegate {
         
         fetchedResultsController.delegate = self
         
+        dispatch_async(dispatch_get_main_queue()) {
+            // Create all of the saved annotations
+            self.mapView.setAnnotationsWithPins(self.fetchedResultsController.fetchedObjects as! [Pin])
+        }
+    }
+    
+    
+    /**
+    Pin changed in NSFetchedResultsController
+     */
+    func controller(controller: NSFetchedResultsController,
+        didChangeObject anObject: AnyObject,
+        atIndexPath indexPath: NSIndexPath?,
+        forChangeType type: NSFetchedResultsChangeType,
+        newIndexPath: NSIndexPath?) {
+            let pin = anObject as! Pin
+            
+            switch type {
+            case .Insert:
+                // Add annotation to MapView
+                mapView.addAnnotation(pin.annotation())
+            default:
+                break
+            }
     }
 }
 
@@ -103,7 +129,7 @@ extension MapViewController : MKMapViewDelegate {
     Set the long press gesture on the MapView
     */
     func setMapViewGesture() {
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "addPin:")
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "createPin:")
         longPressGestureRecognizer.minimumPressDuration = 1.0
         mapView.addGestureRecognizer(longPressGestureRecognizer)
     }
@@ -112,7 +138,7 @@ extension MapViewController : MKMapViewDelegate {
     /**
     Add pin to MapView
     */
-    func addPin(gestureRecognizer:UIGestureRecognizer){
+    func createPin(gestureRecognizer:UIGestureRecognizer){
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
             // Get coordinate of user's touch
             let touchLocation = gestureRecognizer.locationInView(mapView)
@@ -120,16 +146,11 @@ extension MapViewController : MKMapViewDelegate {
             
             // Create pin if no other annotation is at current coordinate
             if !mapView.doesAnnotationExistAtCoordinate(coordinate) {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                mapView.addAnnotation(annotation)
-                
                 let _ = Pin(coordinate: coordinate, context: sharedContext)
                 CoreDataStackManager.sharedInstance().saveContext()
             }
         }
     }
-    
 }
 
 
