@@ -16,10 +16,13 @@ class PinViewController: UIViewController {
     
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var picturesCollectionView: UICollectionView!
+    @IBOutlet weak var photoAlbumCollectionView: UICollectionView!
     @IBOutlet weak var newCollectionButton: UIButton!
+    @IBOutlet weak var noPhotosLabel: UILabel!
     var annotation: VirtualTouristAnnotation!
-    
+    var pin: Pin {
+        return annotation.pin
+    }
     
     // MARK: View Management
     

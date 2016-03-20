@@ -21,6 +21,7 @@
 		68B20DF11C9E18E50017F972 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DF01C9E18E50017F972 /* Pin.swift */; };
 		68B20DF31C9E378F0017F972 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DF21C9E378F0017F972 /* PinViewController.swift */; };
 		68B20DF61C9E3EF40017F972 /* VirtualTouristAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DF51C9E3EF40017F972 /* VirtualTouristAnnotation.swift */; };
+		68B20DFB1C9E5E850017F972 /* FlickrRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DFA1C9E5E850017F972 /* FlickrRequestManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		68B20DF01C9E18E50017F972 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		68B20DF21C9E378F0017F972 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		68B20DF51C9E3EF40017F972 /* VirtualTouristAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTouristAnnotation.swift; sourceTree = "<group>"; };
+		68B20DFA1C9E5E850017F972 /* FlickrRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrRequestManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +101,9 @@
 				68B20DCC1C9DF00F0017F972 /* VirtualTourist.xcdatamodeld */,
 				68B20DE61C9E170E0017F972 /* CoreDataStackManager.swift */,
 				68B20DF41C9E3EBC0017F972 /* MapView */,
-				68B20DEF1C9E18D10017F972 /* Pin */,
 				68B20DE31C9E0A7F0017F972 /* MapRegion */,
+				68B20DEF1C9E18D10017F972 /* Pin */,
+				68B20DF91C9E5D4A0017F972 /* Requests */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -138,6 +141,14 @@
 				68B20DF51C9E3EF40017F972 /* VirtualTouristAnnotation.swift */,
 			);
 			name = MapView;
+			sourceTree = "<group>";
+		};
+		68B20DF91C9E5D4A0017F972 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				68B20DFA1C9E5E850017F972 /* FlickrRequestManager.swift */,
+			);
+			name = Requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +225,7 @@
 			files = (
 				68B20DE01C9DF7290017F972 /* MapRegion.swift in Sources */,
 				68B20DE21C9DFDFB0017F972 /* MapRegionArchiver.swift in Sources */,
+				68B20DFB1C9E5E850017F972 /* FlickrRequestManager.swift in Sources */,
 				68B20DF31C9E378F0017F972 /* PinViewController.swift in Sources */,
 				68B20DC81C9DF00F0017F972 /* MapViewController.swift in Sources */,
 				68B20DF11C9E18E50017F972 /* Pin.swift in Sources */,
