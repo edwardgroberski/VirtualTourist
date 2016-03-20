@@ -90,8 +90,22 @@ class PinViewController: UIViewController {
      Get a new set of images
      */
     @IBAction func newCollectionButtonPressed(sender: UIButton) {
-        pin.photos = NSSet()
+        deletePhotos()
         getImages()
+    }
+    
+    
+    /**
+     Delete photos from fetchedResultsController
+     */
+    func deletePhotos() {
+        if let photos = fetchedResultsController.fetchedObjects {
+            for photo in photos {
+                let deletePhoto = photo as! Photo
+                sharedContext.deleteObject(deletePhoto)
+            }
+            CoreDataStackManager.sharedInstance().saveContext()
+        }
     }
 }
 
@@ -131,6 +145,13 @@ extension PinViewController: UICollectionViewDataSource, UICollectionViewDelegat
         cell.photo = photo
         cell.loadPhoto()
         return cell
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let photo = fetchedResultsController.objectAtIndexPath(indexPath) as! Photo
+        sharedContext.deleteObject(photo)
+        CoreDataStackManager.sharedInstance().saveContext()
     }
     
     
@@ -257,7 +278,6 @@ extension PinViewController {
                 
                 // Create photo
                 let photosArray = result as! [[String: AnyObject]]
-                self.pin.photos = NSSet()
                 for photo in photosArray {
                     let url = photo[FlickrRequestConstants.FlickrResponseKeys.MediumURL] as! String
                     let secret = photo[FlickrRequestConstants.FlickrResponseKeys.Secret] as! String
