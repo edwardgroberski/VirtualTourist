@@ -71,5 +71,6 @@ struct FlickrRequestConstants {
     // MARK: Flickr Response Error Codes
     struct FlickrResponseErrorCodes {
         static let NoPictures = 1111
+        static let otherError = 2222
     }
 }

@@ -49,9 +49,15 @@ class FlickrRequestManager: NSObject {
         
         // Make request to get total number of pages
         flickrImageSearch(parameters) { (result, error) -> Void in
+            guard (error == nil) else {
+                completionHandler(result: nil, error: self.requestError("There was an error with your request: \(error)"))
+                return
+            }
+            
+            
             // GUARD: Is "pages" key in the photosDictionary?
             guard let totalPages = result[FlickrRequestConstants.FlickrResponseKeys.Pages] as? Int else {
-                print("Cannot find key '\(FlickrRequestConstants.FlickrResponseKeys.Pages)' in \(result)")
+                completionHandler(result: nil, error: self.requestError("Cannot find key '\(FlickrRequestConstants.FlickrResponseKeys.Pages)' in \(result)"))
                 return
             }
             
@@ -74,7 +80,7 @@ class FlickrRequestManager: NSObject {
             self.flickrImageSearch(parameters, completionHandler: { (result, error) -> Void in
                 /* GUARD: Is the "photo" key in photosDictionary? */
                 guard let photosArray = result[FlickrRequestConstants.FlickrResponseKeys.Photo] as? [[String: AnyObject]] else {
-                    print("Cannot find key '\(FlickrRequestConstants.FlickrResponseKeys.Photo)' in \(result)")
+                    completionHandler(result: nil, error: self.requestError("Cannot find key '\(FlickrRequestConstants.FlickrResponseKeys.Photo)' in \(result)"))
                     return
                 }
                 
@@ -119,19 +125,19 @@ class FlickrRequestManager: NSObject {
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             // GUARD: Was there an error?
             guard (error == nil) else {
-                print("There was an error with your request: \(error)")
+                completionHandler(result: nil, error: self.requestError("There was an error with your request: \(error)"))
                 return
             }
             
             // GUARD: Did we get a successful 2XX response?
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                print("Your request returned a status code other than 2xx!")
+                completionHandler(result: nil, error: self.requestError("Your request returned a status code other than 2xx!"))
                 return
             }
             
             // GUARD: Was there any data returned?
             guard let data = data else {
-                print("No data was returned by the request!")
+                completionHandler(result: nil, error: self.requestError("No data was returned by the request!"))
                 return
             }
             
@@ -140,19 +146,19 @@ class FlickrRequestManager: NSObject {
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
             } catch {
-                print("Could not parse the data as JSON: '\(data)'")
+                completionHandler(result: nil, error: self.requestError("Could not parse the data as JSON: '\(data)'"))
                 return
             }
             
             // GUARD: Did Flickr return an error (stat != ok)?
             guard let stat = parsedResult[FlickrRequestConstants.FlickrResponseKeys.Status] as? String where stat == FlickrRequestConstants.FlickrResponseValues.OKStatus else {
-                print("Flickr API returned an error. See error code and message in \(parsedResult)")
+                completionHandler(result: nil, error: self.requestError("Flickr API returned an error. See error code and message in \(parsedResult)"))
                 return
             }
             
             // GUARD: Is "photos" key in our result?
             guard let photosDictionary = parsedResult[FlickrRequestConstants.FlickrResponseKeys.Photos] as? [String:AnyObject] else {
-                print("Cannot find keys '\(FlickrRequestConstants.FlickrResponseKeys.Photos)' in \(parsedResult)")
+                completionHandler(result: nil, error: self.requestError("Cannot find keys '\(FlickrRequestConstants.FlickrResponseKeys.Photos)' in \(parsedResult)"))
                 return
             }
             
@@ -213,5 +219,11 @@ class FlickrRequestManager: NSObject {
         let maximumLon = min(longitude + FlickrRequestConstants.Flickr.SearchBBoxHalfWidth, FlickrRequestConstants.Flickr.SearchLonRange.1)
         let maximumLat = min(latitude + FlickrRequestConstants.Flickr.SearchBBoxHalfHeight, FlickrRequestConstants.Flickr.SearchLatRange.1)
         return "\(minimumLon),\(minimumLat),\(maximumLon),\(maximumLat)"
+    }
+    
+    
+    private func requestError(message:String?) -> NSError {
+        return NSError(domain: message ?? "",
+            code: FlickrRequestConstants.FlickrResponseErrorCodes.otherError, userInfo: nil)
     }
 }

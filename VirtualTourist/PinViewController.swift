@@ -20,6 +20,7 @@ class PinViewController: UIViewController {
     @IBOutlet weak var photoAlbumCollectionView: UICollectionView!
     @IBOutlet weak var newCollectionButton: UIButton!
     @IBOutlet weak var noPhotosLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var annotation: VirtualTouristAnnotation!
     var pin: Pin!
@@ -228,10 +229,19 @@ extension PinViewController {
     private func getImages() {
         // Get images if Pin has no Photos
         if pin.photos.isEmpty {
-        
+            activityIndicator.startAnimating()
             FlickrRequestManager.sharedInstance().flickrImageSearchWithPin(pin) { (result, error) -> Void in
                 guard (error == nil) else {
                     print("There was an error with your request: \(error)")
+                    dispatch_async(dispatch_get_main_queue()) {
+                        
+                        if error?.code != FlickrRequestConstants.FlickrResponseErrorCodes.NoPictures {
+                            self.noPhotosLabel.text = "Network Error"
+                        }
+                        self.noPhotosLabel.hidden = false
+                        self.photoAlbumCollectionView.hidden = true
+                        self.activityIndicator.stopAnimating()
+                    }
                     return
                 }
                 
@@ -246,6 +256,7 @@ extension PinViewController {
                 print("Photos: \(photosArray)")
                 dispatch_async(dispatch_get_main_queue()) {
                     self.photoAlbumCollectionView.reloadData()
+                    self.activityIndicator.stopAnimating()
                 }
             }
         }

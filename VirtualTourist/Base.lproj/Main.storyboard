@@ -124,14 +124,32 @@
                                             <outlet property="delegate" destination="gGf-db-17d" id="Xeo-gP-Ex8"/>
                                         </connections>
                                     </collectionView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="c7I-J7-CjL">
+                                        <rect key="frame" x="270" y="146" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="6bU-I6-IQp"/>
+                                            <constraint firstAttribute="height" constant="50" id="PJw-WT-a6W"/>
+                                            <constraint firstAttribute="width" constant="60" id="jIv-PQ-aLR"/>
+                                            <constraint firstAttribute="height" constant="60" id="nVX-x2-8YT"/>
+                                        </constraints>
+                                        <color key="color" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="6bU-I6-IQp"/>
+                                                <exclude reference="PJw-WT-a6W"/>
+                                            </mask>
+                                        </variation>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="c7I-J7-CjL" firstAttribute="centerX" secondItem="dzK-dH-cje" secondAttribute="centerX" id="2ql-r8-SYq"/>
                                     <constraint firstItem="i43-4H-Xml" firstAttribute="centerX" secondItem="dzK-dH-cje" secondAttribute="centerX" id="FNP-MT-tFz"/>
                                     <constraint firstItem="fe3-4Y-AO5" firstAttribute="top" secondItem="dzK-dH-cje" secondAttribute="top" id="Ilk-Yg-woI"/>
                                     <constraint firstItem="fe3-4Y-AO5" firstAttribute="leading" secondItem="dzK-dH-cje" secondAttribute="leading" id="PxW-Dr-6U5"/>
                                     <constraint firstItem="i43-4H-Xml" firstAttribute="centerY" secondItem="dzK-dH-cje" secondAttribute="centerY" id="f7q-fH-SGI"/>
                                     <constraint firstAttribute="trailing" secondItem="fe3-4Y-AO5" secondAttribute="trailing" id="i8N-KU-eQy"/>
+                                    <constraint firstItem="c7I-J7-CjL" firstAttribute="centerY" secondItem="dzK-dH-cje" secondAttribute="centerY" id="oEL-L2-lWK"/>
                                     <constraint firstAttribute="bottom" secondItem="fe3-4Y-AO5" secondAttribute="bottom" id="ukK-tt-xPp"/>
                                 </constraints>
                             </view>
@@ -154,6 +172,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="uKp-f4-5K8"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="c7I-J7-CjL" id="d0G-1D-2kB"/>
                         <outlet property="mapView" destination="XY8-VK-MA5" id="JQ3-pP-Aea"/>
                         <outlet property="newCollectionButton" destination="7pV-B4-wNx" id="dtd-AX-t93"/>
                         <outlet property="noPhotosLabel" destination="i43-4H-Xml" id="z7a-1t-tlf"/>
