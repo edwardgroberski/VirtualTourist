@@ -22,6 +22,7 @@
 		68B20DF31C9E378F0017F972 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DF21C9E378F0017F972 /* PinViewController.swift */; };
 		68B20DF61C9E3EF40017F972 /* VirtualTouristAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DF51C9E3EF40017F972 /* VirtualTouristAnnotation.swift */; };
 		68B20DFB1C9E5E850017F972 /* FlickrRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DFA1C9E5E850017F972 /* FlickrRequestManager.swift */; };
+		68B20DFD1C9E617B0017F972 /* FlickrRequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DFC1C9E617B0017F972 /* FlickrRequestConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		68B20DF21C9E378F0017F972 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		68B20DF51C9E3EF40017F972 /* VirtualTouristAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualTouristAnnotation.swift; sourceTree = "<group>"; };
 		68B20DFA1C9E5E850017F972 /* FlickrRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrRequestManager.swift; sourceTree = "<group>"; };
+		68B20DFC1C9E617B0017F972 /* FlickrRequestConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrRequestConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				68B20DFA1C9E5E850017F972 /* FlickrRequestManager.swift */,
+				68B20DFC1C9E617B0017F972 /* FlickrRequestConstants.swift */,
 			);
 			name = Requests;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B20DFD1C9E617B0017F972 /* FlickrRequestConstants.swift in Sources */,
 				68B20DE01C9DF7290017F972 /* MapRegion.swift in Sources */,
 				68B20DE21C9DFDFB0017F972 /* MapRegionArchiver.swift in Sources */,
 				68B20DFB1C9E5E850017F972 /* FlickrRequestManager.swift in Sources */,

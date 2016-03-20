@@ -20,9 +20,8 @@ class PinViewController: UIViewController {
     @IBOutlet weak var newCollectionButton: UIButton!
     @IBOutlet weak var noPhotosLabel: UILabel!
     var annotation: VirtualTouristAnnotation!
-    var pin: Pin {
-        return annotation.pin
-    }
+    var pin: Pin!
+    
     
     // MARK: View Management
     
@@ -33,6 +32,14 @@ class PinViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setAnnotation()
+        FlickrRequestManager.sharedInstance().flickrImageSearchWithPin(pin) { (result, error) -> Void in
+            guard (error == nil) else {
+                print("There was an error with your request: \(error)")
+                return
+            }
+            
+            print("photos array \(result)")
+        }
     }
     
     

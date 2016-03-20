@@ -80,7 +80,7 @@
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fe3-4Y-AO5">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="351"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o5R-H9-Xrr">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QBc-1X-g8g">
                                             <size key="itemSize" width="50" height="50"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -93,8 +93,19 @@
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tfN-fF-xOi">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        </imageView>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
+                                                <constraints>
+                                                    <constraint firstItem="tfN-fF-xOi" firstAttribute="top" secondItem="iBo-Fb-5p4" secondAttribute="top" id="16I-TN-VXw"/>
+                                                    <constraint firstAttribute="trailing" secondItem="tfN-fF-xOi" secondAttribute="trailing" id="fhd-gn-pML"/>
+                                                    <constraint firstAttribute="bottom" secondItem="tfN-fF-xOi" secondAttribute="bottom" id="mwy-ad-ZaD"/>
+                                                    <constraint firstItem="tfN-fF-xOi" firstAttribute="leading" secondItem="iBo-Fb-5p4" secondAttribute="leading" id="nho-Yd-rnO"/>
+                                                </constraints>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>

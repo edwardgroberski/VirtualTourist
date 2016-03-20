@@ -150,7 +150,7 @@ extension MapViewController : MKMapViewDelegate {
         // Get annotation for controller
         let annotation = view.annotation as! VirtualTouristAnnotation
         controller.annotation = annotation
-        
+        controller.pin = annotation.pin
         self.navigationController!.pushViewController(controller, animated: true)
     }
     
