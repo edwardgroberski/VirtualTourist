@@ -126,6 +126,22 @@ extension MapViewController : MKMapViewDelegate {
     
     
     /**
+    Set pins to use MKPinAnnotationView
+     */
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "pin"
+        let pin = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView ??
+            MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        
+        pin.animatesDrop = true
+        pin.pinTintColor = UIColor.redColor()
+        pin.annotation = annotation
+
+        return pin
+    }
+    
+    
+    /**
     Set the long press gesture on the MapView
     */
     func setMapViewGesture() {
