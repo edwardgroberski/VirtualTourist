@@ -17,6 +17,8 @@
 		68B20DE01C9DF7290017F972 /* MapRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DDF1C9DF7290017F972 /* MapRegion.swift */; };
 		68B20DE21C9DFDFB0017F972 /* MapRegionArchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DE11C9DFDFB0017F972 /* MapRegionArchiver.swift */; };
 		68B20DE51C9E133C0017F972 /* MapViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DE41C9E133C0017F972 /* MapViewUtils.swift */; };
+		68B20DE71C9E170E0017F972 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DE61C9E170E0017F972 /* CoreDataStackManager.swift */; };
+		68B20DF11C9E18E50017F972 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DF01C9E18E50017F972 /* Pin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,9 @@
 		68B20DDF1C9DF7290017F972 /* MapRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRegion.swift; sourceTree = "<group>"; };
 		68B20DE11C9DFDFB0017F972 /* MapRegionArchiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRegionArchiver.swift; sourceTree = "<group>"; };
 		68B20DE41C9E133C0017F972 /* MapViewUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewUtils.swift; sourceTree = "<group>"; };
+		68B20DE61C9E170E0017F972 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		68B20DE81C9E187F0017F972 /* VirtualTourist-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VirtualTourist-Bridging-Header.h"; sourceTree = "<group>"; };
+		68B20DF01C9E18E50017F972 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +93,12 @@
 		68B20DDD1C9DF4DE0017F972 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				68B20DEF1C9E18D10017F972 /* Pin */,
 				68B20DCC1C9DF00F0017F972 /* VirtualTourist.xcdatamodeld */,
+				68B20DE61C9E170E0017F972 /* CoreDataStackManager.swift */,
 				68B20DE31C9E0A7F0017F972 /* MapRegion */,
 				68B20DE41C9E133C0017F972 /* MapViewUtils.swift */,
+				68B20DE81C9E187F0017F972 /* VirtualTourist-Bridging-Header.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -110,6 +118,14 @@
 				68B20DE11C9DFDFB0017F972 /* MapRegionArchiver.swift */,
 			);
 			name = MapRegion;
+			sourceTree = "<group>";
+		};
+		68B20DEF1C9E18D10017F972 /* Pin */ = {
+			isa = PBXGroup;
+			children = (
+				68B20DF01C9E18E50017F972 /* Pin.swift */,
+			);
+			name = Pin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +203,8 @@
 				68B20DE01C9DF7290017F972 /* MapRegion.swift in Sources */,
 				68B20DE21C9DFDFB0017F972 /* MapRegionArchiver.swift in Sources */,
 				68B20DC81C9DF00F0017F972 /* MapViewController.swift in Sources */,
+				68B20DF11C9E18E50017F972 /* Pin.swift in Sources */,
+				68B20DE71C9E170E0017F972 /* CoreDataStackManager.swift in Sources */,
 				68B20DE51C9E133C0017F972 /* MapViewUtils.swift in Sources */,
 				68B20DC61C9DF00F0017F972 /* AppDelegate.swift in Sources */,
 				68B20DCE1C9DF00F0017F972 /* VirtualTourist.xcdatamodeld in Sources */,
@@ -300,11 +318,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = VirtualTourist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.edwardgroberski.VirtualTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VirtualTourist/VirtualTourist-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -312,11 +333,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = VirtualTourist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.edwardgroberski.VirtualTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VirtualTourist/VirtualTourist-Bridging-Header.h";
 			};
 			name = Release;
 		};

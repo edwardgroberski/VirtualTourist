@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 
 /**
@@ -17,9 +18,24 @@ class MapViewController: UIViewController {
 
     // MARK: Properties
     
+    @IBOutlet weak var mapView: MKMapView!
     
     let mapRegionArchiver = MapRegionArchiver()
-    @IBOutlet weak var mapView: MKMapView!
+    
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }
+    
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        let fetchRequest = NSFetchRequest(entityName: String(Pin))
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+            managedObjectContext: self.sharedContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        
+        return fetchedResultsController
+    }()
     
     
     // MARK: View Management
@@ -31,6 +47,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpFetchedResultsController()
         setMapViewGesture()
         restoreMapRegion(false)
     }
@@ -46,6 +63,25 @@ class MapViewController: UIViewController {
         if let mapRegion = mapRegionArchiver.restoreMapRegion() {
             mapView.setRegion(mapRegion.region, animated: animated)
         }
+    }
+}
+
+
+// MARK: NSFetchedResultsControllerDelegate
+
+
+extension MapViewController : NSFetchedResultsControllerDelegate {
+    
+    /**
+    Perform fetch and set delegate
+     */
+    func setUpFetchedResultsController() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {}
+        
+        fetchedResultsController.delegate = self
+        
     }
 }
 
@@ -87,6 +123,9 @@ extension MapViewController : MKMapViewDelegate {
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = coordinate
                 mapView.addAnnotation(annotation)
+                
+                let _ = Pin(coordinate: coordinate, context: sharedContext)
+                CoreDataStackManager.sharedInstance().saveContext()
             }
         }
     }

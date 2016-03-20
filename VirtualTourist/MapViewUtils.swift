@@ -27,4 +27,9 @@ extension MKMapView {
         
         return false
     }
+    
+    
+    func setAnnotationsWithPins(pins:[Pin]) {
+        
+    }
 }
