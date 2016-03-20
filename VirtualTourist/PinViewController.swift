@@ -67,7 +67,6 @@ class PinViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         getImages()
     }
     
@@ -84,6 +83,15 @@ class PinViewController: UIViewController {
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: annotation.pin!.coordinate, span: span)
         mapView.setRegion(region, animated: false)
+    }
+    
+    
+    /**
+     Get a new set of images
+     */
+    @IBAction func newCollectionButtonPressed(sender: UIButton) {
+        pin.photos = NSSet()
+        getImages()
     }
 }
 
@@ -228,8 +236,9 @@ extension PinViewController {
      */
     private func getImages() {
         // Get images if Pin has no Photos
-        if pin.photos.isEmpty {
+        if pin.photos.count == 0 {
             activityIndicator.startAnimating()
+            newCollectionButton.enabled = false
             FlickrRequestManager.sharedInstance().flickrImageSearchWithPin(pin) { (result, error) -> Void in
                 guard (error == nil) else {
                     print("There was an error with your request: \(error)")
@@ -241,12 +250,14 @@ extension PinViewController {
                         self.noPhotosLabel.hidden = false
                         self.photoAlbumCollectionView.hidden = true
                         self.activityIndicator.stopAnimating()
+                        self.newCollectionButton.enabled = true
                     }
                     return
                 }
                 
                 // Create photo
                 let photosArray = result as! [[String: AnyObject]]
+                self.pin.photos = NSSet()
                 for photo in photosArray {
                     let url = photo[FlickrRequestConstants.FlickrResponseKeys.MediumURL] as! String
                     let _ = Photo(photoUrl: url, userPin: self.pin, context: self.sharedContext)
@@ -257,6 +268,7 @@ extension PinViewController {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.photoAlbumCollectionView.reloadData()
                     self.activityIndicator.stopAnimating()
+                    self.newCollectionButton.enabled = true
                 }
             }
         }

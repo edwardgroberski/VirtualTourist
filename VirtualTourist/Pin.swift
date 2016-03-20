@@ -29,7 +29,7 @@ class Pin: NSManagedObject {
     
     @NSManaged var latitude: NSNumber
     @NSManaged var longitude: NSNumber
-    @NSManaged var photos: [Photo]
+    @NSManaged var photos: NSSet
     
     lazy var coordinate: CLLocationCoordinate2D = {
         return CLLocationCoordinate2D(latitude: self.latitude.doubleValue, longitude: self.longitude.doubleValue)
