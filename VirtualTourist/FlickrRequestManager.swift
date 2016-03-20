@@ -92,6 +92,24 @@ class FlickrRequestManager: NSObject {
     
     
     /**
+     Download Flickr image
+     */
+    func flickrDownloadImage(url: String, completionHandler: (imageData: NSData?, error: NSError?) ->  Void){
+        let request = NSURLRequest(URL: NSURL(string: url)!)
+        
+        let task = session.dataTaskWithRequest(request) {data, response, downloadError in
+            if let error = downloadError {
+                completionHandler(imageData: nil, error: error)
+            } else {
+                completionHandler(imageData: data, error: nil)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    
+    /**
      Search Flickr for images with parameters and completion handler
      */
     private func flickrImageSearch(methodParameters: [String:AnyObject], completionHandler: CompletionHander) {

@@ -120,7 +120,7 @@ extension PinViewController: UICollectionViewDataSource, UICollectionViewDelegat
         
         let photo = fetchedResultsController.objectAtIndexPath(indexPath) as! Photo
         cell.photo = photo
-        cell.configure()
+        cell.loadPhoto()
         return cell
     }
     

@@ -99,16 +99,22 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         </imageView>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZJj-2I-hV4">
+                                                            <rect key="frame" x="32" y="31" width="37" height="37"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <constraints>
                                                     <constraint firstItem="tfN-fF-xOi" firstAttribute="top" secondItem="iBo-Fb-5p4" secondAttribute="top" id="16I-TN-VXw"/>
+                                                    <constraint firstItem="ZJj-2I-hV4" firstAttribute="centerX" secondItem="iBo-Fb-5p4" secondAttribute="centerX" id="Raq-oa-Uku"/>
+                                                    <constraint firstItem="ZJj-2I-hV4" firstAttribute="centerY" secondItem="iBo-Fb-5p4" secondAttribute="centerY" id="d4Z-Bs-uqZ"/>
                                                     <constraint firstAttribute="trailing" secondItem="tfN-fF-xOi" secondAttribute="trailing" id="fhd-gn-pML"/>
                                                     <constraint firstAttribute="bottom" secondItem="tfN-fF-xOi" secondAttribute="bottom" id="mwy-ad-ZaD"/>
                                                     <constraint firstItem="tfN-fF-xOi" firstAttribute="leading" secondItem="iBo-Fb-5p4" secondAttribute="leading" id="nho-Yd-rnO"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="activityIndicator" destination="ZJj-2I-hV4" id="5yD-lL-Fid"/>
                                                     <outlet property="photoImageView" destination="tfN-fF-xOi" id="eDA-wO-Ko9"/>
                                                 </connections>
                                             </collectionViewCell>
