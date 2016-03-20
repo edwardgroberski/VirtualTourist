@@ -16,12 +16,28 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="VirtualTourist_1024" translatesAutoresizingMaskIntoConstraints="NO" id="pSl-0K-wQ1">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="pSl-0K-wQ1" secondAttribute="bottom" id="bTm-zi-3xc"/>
+                            <constraint firstItem="pSl-0K-wQ1" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="gth-7w-BFa"/>
+                            <constraint firstAttribute="trailing" secondItem="pSl-0K-wQ1" secondAttribute="trailing" id="hlg-zo-Jhd"/>
+                            <constraint firstItem="pSl-0K-wQ1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="spq-sI-uMv"/>
+                        </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="VirtualTourist_1024" width="1024" height="1024"/>
+    </resources>
 </document>
