@@ -260,7 +260,10 @@ extension PinViewController {
                 self.pin.photos = NSSet()
                 for photo in photosArray {
                     let url = photo[FlickrRequestConstants.FlickrResponseKeys.MediumURL] as! String
-                    let _ = Photo(photoUrl: url, userPin: self.pin, context: self.sharedContext)
+                    let secret = photo[FlickrRequestConstants.FlickrResponseKeys.Secret] as! String
+                    let imageId = photo[FlickrRequestConstants.FlickrResponseKeys.Id] as! String
+                    let imageName = "\(imageId)_\(secret).jpg"
+                    let _ = Photo(photoUrl: url, userPin: self.pin, imageName: imageName, context: self.sharedContext)
                 }
                 
                 CoreDataStackManager.sharedInstance().saveContext()

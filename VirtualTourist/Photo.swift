@@ -20,8 +20,9 @@ class Photo: NSManagedObject {
     
     // MARK: Properties
     
-    @NSManaged var url: String?
-    @NSManaged var pin: Pin?
+    @NSManaged var url: String
+    @NSManaged var pin: Pin
+    @NSManaged var fileName: String
     
     
     // MARK: Initializers
@@ -38,11 +39,21 @@ class Photo: NSManagedObject {
     /**
      Init Photo with URL
      */
-    init(photoUrl: String, userPin: Pin, context: NSManagedObjectContext) {
+    init(photoUrl: String, userPin: Pin, imageName: String, context: NSManagedObjectContext) {
         let entity =  NSEntityDescription.entityForName(String(Photo), inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         
         url = photoUrl
         pin = userPin
+        fileName = imageName
+    }
+    
+    
+    /**
+     File path of image
+     */
+    var filePath: NSURL {
+        let documentsDirectoryURL: NSURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        return documentsDirectoryURL.URLByAppendingPathComponent(fileName)
     }
 }

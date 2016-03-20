@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     
@@ -25,24 +26,28 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     
     // MARK: Photo Methods
-    
+
     
     /**
     Download and set image for cell
     */
     func loadPhoto() {
-        print(photo?.url)
-        
-        if let url = photo?.url {
+
+        if NSFileManager.defaultManager().fileExistsAtPath(photo!.filePath.path!) {
+            let image = UIImage(data: NSData(contentsOfURL: (photo!.filePath))!)
+            self.photoImageView.image = image
+            self.activityIndicator.hidden = true
+        } else {
             activityIndicator.startAnimating()
             self.activityIndicator.hidesWhenStopped = true
-            FlickrRequestManager.sharedInstance().flickrDownloadImage(url) { (imageData, error) -> Void in
+            FlickrRequestManager.sharedInstance().flickrDownloadImage(photo!.url) { (imageData, error) -> Void in
                 guard (error == nil) else {
                     print("There was an error with your request: \(error)")
                     return
                 }
                 
                 if let data = imageData {
+                    NSFileManager.defaultManager().createFileAtPath(self.photo!.filePath.path!, contents: data, attributes: nil)
                     dispatch_async(dispatch_get_main_queue()) {
                         let image = UIImage(data: data)
                         self.photoImageView.image = image
@@ -51,5 +56,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
                 }
             }
         }
+
     }
 }
