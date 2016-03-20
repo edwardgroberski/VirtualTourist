@@ -10,8 +10,16 @@ import Foundation
 import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
+    
+    struct Contants {
+        static let cellIdentifier = "photoCell"
+    }
 
     @IBOutlet weak var photoImageView: UIImageView!
+    var photo: Photo?
     
     
+    func configure() {
+        print(photo?.url)
+    }
 }

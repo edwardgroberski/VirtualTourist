@@ -19,9 +19,9 @@ class MapRegion: NSObject, NSCoding {
     
     
     struct Keys {
-        static let Latitude = "latitude"
-        static let Longitude = "longitude"
-        static let LatitudeDelta = "latitudeDelta"
+        static let Latitude       = "latitude"
+        static let Longitude      = "longitude"
+        static let LatitudeDelta  = "latitudeDelta"
         static let LongitudeDelta = "longitudeDelta"
     }
     
