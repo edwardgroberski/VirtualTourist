@@ -63,9 +63,10 @@ class Pin: NSManagedObject {
     /**
     Return Annotation from coordinate
     */
-    func annotation() -> MKPointAnnotation {
-        let annotation = MKPointAnnotation()
+    func annotation() -> VirtualTouristAnnotation {
+        let annotation = VirtualTouristAnnotation()
         annotation.coordinate = coordinate
+        annotation.pin = self
         return annotation
     }
 }

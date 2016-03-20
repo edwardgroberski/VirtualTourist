@@ -63,7 +63,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="New Collection"/>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XY8-VK-MA5">
+                            <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XY8-VK-MA5">
                                 <rect key="frame" x="0.0" y="64" width="600" height="135"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="135" id="Q4a-hH-KfS"/>

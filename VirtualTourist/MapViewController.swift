@@ -144,9 +144,13 @@ extension MapViewController : MKMapViewDelegate {
      Selected pin, push PinViewController
     */
     func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
-        let controller = storyboard!.instantiateViewControllerWithIdentifier(String(PinViewController))
-            as! PinViewController
-
+        mapView.deselectAnnotation(view.annotation, animated: true)
+        let controller = storyboard!.instantiateViewControllerWithIdentifier(String(PinViewController)) as! PinViewController
+        
+        // Get annotation for controller
+        let annotation = view.annotation as! VirtualTouristAnnotation
+        controller.annotation = annotation
+        
         self.navigationController!.pushViewController(controller, animated: true)
     }
     
