@@ -19,6 +19,7 @@
 		68B20DE51C9E133C0017F972 /* MapViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DE41C9E133C0017F972 /* MapViewUtils.swift */; };
 		68B20DE71C9E170E0017F972 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DE61C9E170E0017F972 /* CoreDataStackManager.swift */; };
 		68B20DF11C9E18E50017F972 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DF01C9E18E50017F972 /* Pin.swift */; };
+		68B20DF31C9E378F0017F972 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B20DF21C9E378F0017F972 /* PinViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		68B20DE61C9E170E0017F972 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 		68B20DE81C9E187F0017F972 /* VirtualTourist-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VirtualTourist-Bridging-Header.h"; sourceTree = "<group>"; };
 		68B20DF01C9E18E50017F972 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		68B20DF21C9E378F0017F972 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				68B20DC71C9DF00F0017F972 /* MapViewController.swift */,
+				68B20DF21C9E378F0017F972 /* PinViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			files = (
 				68B20DE01C9DF7290017F972 /* MapRegion.swift in Sources */,
 				68B20DE21C9DFDFB0017F972 /* MapRegionArchiver.swift in Sources */,
+				68B20DF31C9E378F0017F972 /* PinViewController.swift in Sources */,
 				68B20DC81C9DF00F0017F972 /* MapViewController.swift in Sources */,
 				68B20DF11C9E18E50017F972 /* Pin.swift in Sources */,
 				68B20DE71C9E170E0017F972 /* CoreDataStackManager.swift in Sources */,

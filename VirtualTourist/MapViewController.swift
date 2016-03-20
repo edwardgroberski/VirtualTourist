@@ -127,17 +127,27 @@ extension MapViewController : MKMapViewDelegate {
     
     /**
     Set pins to use MKPinAnnotationView
-     */
+    */
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "pin"
         let pin = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView ??
             MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        
+
         pin.animatesDrop = true
         pin.pinTintColor = UIColor.redColor()
         pin.annotation = annotation
 
         return pin
+    }
+    
+    /**
+     Selected pin, push PinViewController
+    */
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+        let controller = storyboard!.instantiateViewControllerWithIdentifier(String(PinViewController))
+            as! PinViewController
+
+        self.navigationController!.pushViewController(controller, animated: true)
     }
     
     
